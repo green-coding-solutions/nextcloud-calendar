@@ -36,7 +36,7 @@ flow:
           && cd /var/www/html/apps/calendar/ \
           && sudo -u www-data composer install --no-dev \
           && sudo -u www-data npm ci \
-          && sudo -u www-data npm run build \
+          && sudo -u www-data npm run build -- --parallelism 1 \
           && sudo -u www-data php /var/www/html/occ app:enable calendar
         shell: bash
 
