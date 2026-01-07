@@ -1,7 +1,7 @@
 name: Sync Fork with Upstream
 on:
   schedule:
-    - cron: "30 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
     inputs:
       debug:
@@ -29,15 +29,15 @@ jobs:
       - name: Add remote repository
         run: |
           git remote add upstream https://github.com/nextcloud/calendar.git
-          git fetch --depth 50 --no-recurse-submodules --no-tags upstream main
+          git fetch --depth 50 --no-recurse-submodules --no-tags upstream master
 
       - name: Check for updates
         run: |
-          CHANGES=$(git rev-list HEAD..upstream/main --count)
+          CHANGES=$(git rev-list HEAD..upstream/master --count)
           if [ "$CHANGES" -gt 0 ]; then
-            echo "Updating fork main branch..."
-            git checkout main
-            git merge upstream/main
+            echo "Updating fork master branch..."
+            git checkout master
+            git merge upstream/master
           else
             echo "No updates from the original repository."
           fi
