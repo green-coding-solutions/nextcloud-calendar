@@ -34,7 +34,7 @@ jobs:
 
       - name: Check for updates
         run: |
-          CHANGES=$(git rev-list HEAD..upstream/master --count)
+          CHANGES=$(git rev-list HEAD..upstream/main --count)
           if [ "$CHANGES" -gt 0 ]; then
             echo "Updating fork main branch..."
             git checkout main
