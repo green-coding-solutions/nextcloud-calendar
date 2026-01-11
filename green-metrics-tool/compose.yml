@@ -14,11 +14,11 @@ services:
       # REDIS_HOST: redis
       PHP_MEMORY_LIMIT: 512M
       HOST_URL: http://app
-      NODE_OPTIONS: "--max-old-space-size=3072"
+      NODE_OPTIONS: "--max-old-space-size=1024"
     deploy:
       resources:
         limits:
-          memory: 2GB
+          memory: 6GB
     healthcheck:
       test: curl --fail --silent -k http://app
       interval: "1h" # effectively turns repeated healthchecks during runtime off
