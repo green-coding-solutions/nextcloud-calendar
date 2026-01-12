@@ -31,6 +31,7 @@ flow:
         command: |
           mkdir /var/www/html/apps/calendar/ \
           && cp -r /tmp/repo/* /var/www/html/apps/calendar/\
+          && sed -i '/^module\.exports = webpackConfig$/e cat /tmp/repo/green-metrics-tool/memory_patch.txt' /var/www/html/apps/calendar/webpack.config.js \
           && chown -R www-data:www-data /var/www/html/apps/calendar/ \
           && cd /var/www/html/apps/calendar/ \
           && sudo -u www-data composer install --no-dev \

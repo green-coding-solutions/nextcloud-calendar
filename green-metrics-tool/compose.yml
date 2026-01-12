@@ -18,7 +18,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 6GB
+          memory: 4GB
     healthcheck:
       test: curl --fail --silent -k http://app
       interval: "1h" # effectively turns repeated healthchecks during runtime off
