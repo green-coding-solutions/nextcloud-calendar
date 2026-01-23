@@ -19,7 +19,7 @@ jobs:
       XDEBUG_MODE: coverage
     steps:
     - name: Set up php${{ matrix.php-versions }}
-      uses: shivammathur/setup-php@5efa2a774eb6c55954af5652a1f947afbc8dd282
+      uses: shivammathur/setup-php@85c019fd025f731a83ac9fbc1cdd9ba69d76b6e3 # v2.36.0 with verbose logging due to stuck runs
       with:
         php-version: ${{ matrix.php-versions }}
         extensions: ctype, curl, dom, gd, gmp, iconv, intl, json, mbstring, openssl, pdo_sqlite, posix, sqlite, xml, zip
@@ -61,6 +61,8 @@ jobs:
           - php-versions: '8.5'
             nextcloud-versions: 'stable32'
         include:
+          - php-versions: '8.4'
+            nextcloud-versions: 'stable33'
           - php-versions: '8.1'
             nextcloud-versions: 'stable32'
     name: php${{ matrix.php-versions }} on ${{ matrix.nextcloud-versions }} integration tests
@@ -69,7 +71,7 @@ jobs:
       XDEBUG_MODE: coverage
     steps:
       - name: Set up php${{ matrix.php-versions }}
-        uses: shivammathur/setup-php@5efa2a774eb6c55954af5652a1f947afbc8dd282
+        uses: shivammathur/setup-php@85c019fd025f731a83ac9fbc1cdd9ba69d76b6e3 # v2.36.0 with verbose logging due to stuck runs
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: ctype, curl, dom, gd, gmp, iconv, intl, json, mbstring, openssl, pdo_sqlite, posix, sqlite, xml, zip
